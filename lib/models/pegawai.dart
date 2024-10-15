@@ -7,11 +7,5 @@ class Pegawai {
   String password;
 
   Pegawai(
-    this.id,
-    this.nip,
-    this.nama,
-    this.tglLahir,
-    this.email,
-    this.password,
-  );
+      this.id, this.nip, this.nama, this.tglLahir, this.email, this.password);
 }
