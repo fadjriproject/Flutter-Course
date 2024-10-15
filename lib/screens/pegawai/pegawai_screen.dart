@@ -12,9 +12,12 @@ class PegawaiScreen extends StatefulWidget {
 
 class _PegawaiScreenState extends State<PegawaiScreen> {
   final List<Pegawai> pegawai = [
-    Pegawai(1, "202102-01", "Ardie", "10/01/1922", "gmail@ardie.com", "ardieajah"),
-    Pegawai(2, "202002-02", "Nico", "10/01/1922", "gmail@nico.com", "niconiconi"),
-    Pegawai(3, "202202-02", "Iqbil", "10/01/1922", "gmail@iqbil.com", "iqbilkun"),
+    Pegawai(
+        1, "202102-01", "Ardie", "10/01/1922", "gmail@ardie.com", "ardieajah"),
+    Pegawai(
+        2, "202002-02", "Nico", "10/01/1922", "gmail@nico.com", "niconiconi"),
+    Pegawai(
+        3, "202202-02", "Iqbil", "10/01/1922", "gmail@iqbil.com", "iqbilkun"),
     Pegawai(4, "202102-04", "Ibra", "10/01/1922", "gmail@ibra.com", "ibrahim"),
   ];
 
