@@ -36,6 +36,15 @@ class _PasienFormState extends State<PasienForm> {
     'alamat': FocusNode(),
   };
 
+  final Map<String, TextInputType> _keyboardTypes = {
+    'noRM': TextInputType.number, // Numeric input
+    'nama': TextInputType.text, // Text input
+    'penyakit': TextInputType.text, // Text input
+    'tglLahir': TextInputType.none, // Use AbsorbPointer
+    'noTelepon': TextInputType.phone, // Phone number input
+    'alamat': TextInputType.text, // Text input
+  };
+
   @override
   void initState() {
     super.initState();
@@ -124,6 +133,8 @@ class _PasienFormState extends State<PasienForm> {
                     return TextFormField(
                       controller: entry.value,
                       focusNode: _focusNodes[entry.key],
+                      keyboardType:
+                          _keyboardTypes[entry.key], // Set keyboard type
                       decoration: InputDecoration(labelText: entry.key),
                       validator: (value) {
                         if (value == null || value.isEmpty) {
