@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:klinik_app/screens/screen.dart';
+import 'package:klinik_app/screens/auth/login.dart';
 
 void main() {
   runApp(const MainApp());
@@ -15,6 +15,6 @@ class MainApp extends StatefulWidget {
 class _MainAppState extends State<MainApp> {
   @override
   Widget build(BuildContext context) {
-    return const Screen();
+    return const LoginScreen();
   }
 }

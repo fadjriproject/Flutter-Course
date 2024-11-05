@@ -1,40 +1,31 @@
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:klinik_app/screens/screen.dart';
 
 class LoginScreen extends StatefulWidget {
-  final Function(bool)
-      onLoginSuccess; // Required callback to handle login success
-
-  // Constructor now requires onLoginSuccess parameter
-  const LoginScreen({Key? key, required this.onLoginSuccess}) : super(key: key);
+  const LoginScreen({super.key});
 
   @override
-  _LoginScreenState createState() => _LoginScreenState();
+  State<LoginScreen> createState() => _LoginScreenState();
 }
 
 class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController _usernameController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
-  // Function to save login status to SharedPreferences
-  Future<void> _saveLoginStatus(bool isLoggedIn) async {
-    final prefs = await SharedPreferences.getInstance();
-    await prefs.setBool('isLoggedIn', isLoggedIn);
-  }
-
+  // Function to handle login
   void _login() {
+    // Simple validation for username and password (you can replace this with your own logic)
     if (_usernameController.text == 'admin' &&
         _passwordController.text == 'secret') {
-      widget.onLoginSuccess(true); // Call the onLoginSuccess callback
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Login successful')),
+      );
 
-      // Save login status
-      _saveLoginStatus(true);
-
-      // Optionally, you can navigate to the main screen here too
-      // Navigator.pushReplacement(
-      //   context,
-      //   MaterialPageRoute(builder: (context) => const Screen()),
-      // );
+      Navigator.of(context).pushReplacement(
+        MaterialPageRoute(
+          builder: (context) => const Screen(),
+        ),
+      );
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('Invalid username or password')),
@@ -45,22 +36,36 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Login')),
+      appBar: AppBar(
+        title: const Text('Login'),
+      ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            // Username TextField
             TextFormField(
               controller: _usernameController,
-              decoration: const InputDecoration(labelText: 'Username'),
+              decoration: const InputDecoration(
+                labelText: 'Username',
+                border: OutlineInputBorder(),
+              ),
             ),
             const SizedBox(height: 16),
+
+            // Password TextField
             TextFormField(
               controller: _passwordController,
               obscureText: true,
-              decoration: const InputDecoration(labelText: 'Password'),
+              decoration: const InputDecoration(
+                labelText: 'Password',
+                border: OutlineInputBorder(),
+              ),
             ),
-            const SizedBox(height: 20),
+            const SizedBox(height: 24),
+
+            // Login Button
             ElevatedButton(
               onPressed: _login,
               child: const Text('Login'),
