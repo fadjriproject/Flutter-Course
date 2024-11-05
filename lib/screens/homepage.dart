@@ -70,7 +70,8 @@ class Menu extends StatelessWidget {
   final String title;
   final VoidCallback onPressed;
 
-  const Menu({Key? key, required this.title, required this.onPressed}) : super(key: key);
+  const Menu({Key? key, required this.title, required this.onPressed})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
